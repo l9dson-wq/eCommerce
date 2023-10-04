@@ -2,6 +2,8 @@
 
 This is an eCommerce made under JS and NodeJS, it also uses MongoDB as Database.
 
+The viwes of this porject were made with EJS and Express-Layouts.
+
 Icons' has been used: https://remixicon.com/
 
 Users will be able to actually do purchases of merchandises through stripe, official website: https://stripe.com/
