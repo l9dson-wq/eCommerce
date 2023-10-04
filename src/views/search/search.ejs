@@ -1,0 +1,153 @@
+
+<link rel="stylesheet" href="css/search/search.css">
+
+<div class="search_grand_container">
+  <!-- <h2>Lista de productos buscados</h2> -->
+  <div class="serach_child_container">
+    <div class="search_child_left_side">
+      <div class="search_child_left_side_filters">
+        <form onsubmit="forSearching(event)">
+          <div class="search_child_lef_side_filters_container">
+
+            <h3>Categorias</h3>
+            <% categoiresGot.forEach((item) => { %>
+              <div class="search_child_left_side_filters_childs">
+                <input type="checkbox" name="categoryFilter" value="<%= item.name %>" onchange="handleCheckboxChange(this)">
+                <div class="search_child_left_side_filters_childs_category_quantity">
+                  <p><%= item.name %></p>
+                  <% let count = 0; %>
+                  <% products.forEach((product) => { %>
+                    <% if (product.category === item._doc.name) { %>
+                      <% count++; %>
+                    <% } %>
+                  <% }) %> 
+                  <span><%= count %></span>
+                </div>
+              </div>
+            <% }) %>
+        
+            <h3>Precio maximo</h3>
+            <div class="search_child_left_side_filters_childs">
+              <input type="checkbox" name="priceFilter" onchange="handleCheckboxChange(this)" value="<%= 1000 %>">
+              <p>$1,000</p>
+            </div>
+            <div class="search_child_left_side_filters_childs">
+              <input type="checkbox" name="priceFilter" onchange="handleCheckboxChange(this)" value="<%= 2000 %>">
+              <p>$2,000</p>
+            </div>
+            <div class="search_child_left_side_filters_childs">
+              <input type="checkbox" name="priceFilter" onchange="handleCheckboxChange(this)" value="<%= 5000 %>">
+              <p>$5,000</p>
+            </div>
+            <div class="search_child_left_side_filters_childs">
+              <input type="checkbox" name="priceFilter" onchange="handleCheckboxChange(this)" value="<%= 10000 %>">
+              <p>$10,000</p>
+            </div>
+            <div class="search_child_left_side_filters_childs">
+              <input type="checkbox" name="priceFilter" onchange="handleCheckboxChange(this)" value="<%= 1000000000000000 %>">
+              <p>Sin limite</p>
+            </div>
+
+            <!-- <h3>Marcas</h3>
+            <% brands.forEach((item) => { %>
+              <div class="search_child_left_side_filters_childs">
+                <input type="checkbox" name="brandFilter" value="<%= item.name %>" onchange="handleCheckboxChange(this)">
+                <div class="search_child_left_side_filters_childs_category_quantity">
+                  <p><%= item.name %></p>
+                  <% let count = 0; %>
+                  <% products.forEach((product) => { %>
+                    <% if (product.companyName === item._doc.name) { %>
+                      <% count++; %>
+                    <% } %>
+                  <% }) %> 
+                  <span><%= count %></span>
+                </div>
+              </div>
+            <% }) %> -->
+<!-- 
+            <h3>Precio fijo</h3>
+            <div class="search_child_left_side_filters_childs">
+              <input type="text" name="priceFixFilter" onchange="handleCheckboxChange(this)">
+            </div> -->
+
+          </div>
+        
+          <button type="submit" id="search_btn_for_filters">Filtrar</button>
+        </form>
+      </div>
+    </div>
+    <div class="search_items_container">
+      <div class="search_items_container_sub_div_container">
+        <% if ( category_filter != undefined ) { %>
+          <div class="search_items_container_sub_div">
+            <span><%= category_filter%></span>
+          </div>
+        <% } %>
+        <% if ( price_filter != undefined ) { %>
+          <div class="search_items_container_sub_div">
+            <% if ( price_filter == 1000000000000000) { %>
+              <span>$ sin limite</span>
+            <% } else { %>
+              <span>$<%= price_filter%></span>
+            <% } %>
+          </div>
+        <% } %>
+      </div>
+      <div class="search_items_container_of_items">
+        <% productList.forEach((item) => { %>
+          <div class="search_items">
+            
+            <div class="search_item_img">
+              <div class="search_item_img_container">
+                <a href="/product/<%= item._id %>/information">
+                  <% imagesCollectionGot.forEach((image) => { %>
+                    <% if ( image.productId && item._id ) { %>
+                        <% if ( image.productId.toString() === item._id.toString() ) { %>
+                            <img src="<%= image.imagePath1 %>" alt="" />
+                        <% } %>
+                    <% } %>
+                  <% }) %>
+                </a>
+              </div>
+  
+              <div class="search_item_extra_info">
+                <a href="/product/<%= item._id %>/information">
+                  <p class="search_item_extra_info_name"><%= item.name %></p>
+                </a>
+                <p class="search_item_extra_info_price">$<%= item.price %></p>
+                <p class="search_item_extra_info_rate">
+                  <!-- <% for(let i = 1; i<=5; i++) { %>
+                    <i class="fa-solid fa-star"></i>
+                  <% } %>
+                  <%= item.rate %> -->
+                </p>
+                <p class="search_item_extra_info_company"><%= item.companyName %></p>
+                <% if ( item.quantity < 20 ) { %>
+                  <p class="search_item_extra_info_quantity">
+                    <%= item.quantity %> disponibles <i class="fa-solid fa-fire"></i>
+                  </p>
+                <% } %>
+                <% views.forEach((view) => { %>
+                  <% if ( item._id.toString() === view.productId.toString() ) { %>
+                    <span class="product_view_info">vistas: <%= view.count %>  <i class="fa-solid fa-eye"></i></span>
+                  <% } %>
+                <% }) %>
+                <% sellerInformation.forEach((seller) => { %>
+                  <% if ( seller._id.toString() == item.userId.toString() ) { %>
+                    <p class="search_item_extra_info_company"><%= seller.name %></p>
+                  <% } %>
+                <% }) %>
+              </div>
+            </div>
+  
+          </div>
+        <% }) %>
+      </div>
+    </div>
+    <!-- <div class="search_child_right_side">
+      <h2>Right side</h2>
+    </div> -->
+  </div>
+</div>
+
+<script src="scripts/search.js"></script>

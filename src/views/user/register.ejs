@@ -1,0 +1,146 @@
+<link rel="stylesheet" href="/css/user/register.css" />
+
+<div class="register_father">
+  <div class="register">
+    <h2>Registro</h2>
+
+    <div class="register_inputs">
+      <div id="register_inputs_pfp_preview_side">
+        <i class="fa-solid fa-circle-user" id="register_preview_icon"></i>
+        <img alt="" width="150" id="register_preview" >
+      </div>
+      <form id="register_form" method="post" action="/insert_user" enctype="multipart/form-data">
+        <div class="register_form_div_1">
+          <div>
+            <label for="name">Nombre</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Nombre"
+              required
+              autocomplete="off"
+            />
+          </div>
+          <div>
+            <label for="lastName">Apellido</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Apellido"
+              required
+              autocomplete="off"
+            />
+          </div>
+          <div>
+            <label for="age">Edad</label>
+            <input type="text" id="age" name="age" placeholder="Edad" required />
+          </div>
+          <div>
+            <label for="userName">Nombre de usuario</label>
+            <input
+              type="text"
+              id="userName"
+              name="userName"
+              placeholder="Nombre de usuario"
+              required
+              autocomplete="off"
+            />
+            <p class="error_authentication_message">
+              Posiblemente usuario actualmente en uso
+            </p>
+          </div>
+          <div>
+            <label for="phone">Telefono</label>
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              placeholder="Telefono"
+              required
+              autocomplete="off"
+            />
+          </div>
+        </div>
+        <div class="register_form_div_2">
+          <div>
+            <label for="email">Direccion de correo electronico</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="correo electronico"
+              required
+              autocomplete="off"
+            />
+            <p class="error_authentication_message">
+              Posiblemente Correo actualmente en uso
+            </p>
+          </div>
+          <div>
+            <label for="country">Pais</label>
+            <!-- <input type="text" id="country" name="country" placeholder="pais de origen" required> -->
+            <select name="country" id="country">
+              <% countries.forEach(item => { %>
+              <option value="<%= item.name.common %>">
+                <%= item.name.common %>
+              </option>
+              <% }) %>
+            </select>
+          </div>
+          <div>
+            <label for="password">Contraseña</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Contraseña"
+              required
+            />
+            <p class="error_password_message">Contraseñas no coinciden</p>
+          </div>
+          <div>
+            <label for="confirm_password">Confirmar Contraseña</label>
+            <input
+              type="password"
+              id="confirm_password"
+              name="confirm_password"
+              placeholder="Confirmar Contraseña"
+              required
+            />
+            <p class="error_password_message">Contraseñas no coinciden</p>
+          </div>
+          <div>
+            <label for="register_input_file">Imagen</label>
+            <label id="insert_pfp_register_user" for="fileInput">Seleccionar imagen</label>
+            <input
+            type="file"
+            name="image"
+            id="fileInput"
+            onchange="showPreview(event)"
+            value=""
+            required
+            />
+          </div>
+        </div>
+        
+      </form>
+    </div>
+    <button type="submit" id="btn_register" form="register_form">
+      register
+    </button>
+
+    <p>Ya tienes una cuenta con nosotros? <a href="/login">Inicia sesion</a></p>
+  </div>
+</div>
+
+<div id="register_successModal" class="register_modal">
+  <div class="register_modal_content">
+    <i class="fa-regular fa-circle-check"></i>
+    <h3>Registro Exitoso</h3>
+    <p>Tu usuario ha sido registrado correctamente.</p>
+  </div>
+</div>
+
+<script src="scripts/register.js"></script>

@@ -1,0 +1,132 @@
+<link rel="stylesheet" href="/css/navbar.css" />
+
+<div class="navbar">
+  <div class="navbar_content">
+    <div class="navbar_logo">
+      <a href="/">Team<span>Store</span></a>
+    </div>
+
+    <div class="navbar_options">
+      <!-- <a href="#" class="navbar_options_category_link"
+        >Categorias <i class="fa-solid fa-angle-down"></i
+      ></a> -->
+      <!-- <a href="#" class="navbar_options_link">Negocios</a> -->
+      <!-- <a href="#" class="navbar_options_link">Envíos</a> -->
+      <!-- <a href="/favorites" class="navbar_options_link">Favoritos</a> -->
+    </div>
+
+    <div class="navbar_search">
+      <input type="text" id="searchInput" placeholder="Buscar Producto" onclick="searching()" class="search-input" />
+      <a href="#" onclick="performSearch(event)"><i class="fa-solid fa-magnifying-glass"></i></a>
+    </div>
+
+    <div class="navbar_extras">
+      <div class="dropdown">
+        <a href="#" onclick="toggleDropdown(event)" id="navbar_burger_menu">
+          <i class="fa-solid fa-bars"></i>
+        </a>
+        <% if ( session && session.user == undefined ) { %>
+          <a href="/login" id="navbar_pfp_image_no_login"><i class="ri-user-line"></i> Cuenta</a>
+        <% } else { %>
+          <a href="#" onclick="toggleDropdown(event)" id="navbar_pfp_image_container">
+            <img src="/<%= session.user.imagePath %>" alt="" id="navbar_pfp_image"> <%= session.user.userName %>
+          </a>
+        <% } %>
+        <div class="dropdown-content">
+          <% if (session && session.user) { %>
+            <div class="dropdown_content_mini_profile">
+              <img src="/<%= session.user.imagePath %>" alt="" id="">
+              <div>
+                <a href="/user/<%= session.user._id %>/profile"><strong><%= session.user.name %></strong></a>
+                <p>@<%= session.user.userName %></p>
+              </div>
+            </div>
+            <hr>
+            <!-- <a href="#" class="dropdown_content_a"><i class="fa-regular fa-user"></i> Editar perfil</a> -->
+            <a href="/products" class="dropdown_content_a"><i class="ri-edit-2-line"></i> Productos</a>
+            <a href="/favorites" class="dropdown_content_a" id="responsive_display"><i class="fa-regular fa-heart"></i> Favoritos</a>
+            <a href="#" class="dropdown_content_a" id="responsive_display"><i class="fa-solid fa-shop"></i> Negocios</a>
+            <a href="#" class="dropdown_content_a" id="responsive_display"><i class="fa-solid fa-box-open"></i> Envíos</a>
+            <% if ( session.user.userType == "admin" ) { %>
+              <a href="/category" class="dropdown_content_a"><i class="ri-price-tag-line"></i> Categorías</a>
+              <a href="/brands" class="dropdown_content_a"><i class="ri-font-size"></i> Marcas</a>
+            <% } %>
+          <% } else { %>
+            <a href="/login" class="dropdown_content_a">Iniciar sesión</a>
+          <% } %>
+          <a href="/logout" class="navbar_extras_logout_button"><i class="ri-door-open-line"></i> Cerrar sesión</a>
+        </div>
+      </div>
+      <a href="/cart" id="navbar_carrito">
+        <i class="ri-shopping-bag-line"></i>
+        Carrito
+       <% if ( session.user ) { %>
+        <span class="carrito_cantidad"><%= cart_items %></span>
+       <% } %>
+      </a>
+      <a href="/favorites">
+        <i class="ri-bookmark-line"></i>
+        favoritos
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleDropdown(event) {
+    // console.log('hola');
+    const dropdown = event.currentTarget.parentNode;
+    dropdown.classList.toggle('show');
+  }
+
+  window.addEventListener('click', (event) => {
+    const dropdowns = document.getElementsByClassName('dropdown');
+    Array.from(dropdowns).forEach((dropdown) => {
+      if (!dropdown.contains(event.target) && dropdown.classList.contains('show')) {
+        dropdown.classList.remove('show');
+      }
+    });
+  });
+
+  //Working with search bar
+  const navbarSearch = document.querySelector('.navbar_search');
+  const searchInput = document.querySelector('.search-input');
+  const navbarOptionLinks = document.querySelectorAll('.navbar_options_link');
+  const searchInputId = document.getElementById('searchInput');
+
+  searchInputId.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        // event.preventDefault();
+        performSearch(event);
+      }
+    });
+
+  // proccess to determine what's client searching
+  function performSearch(event) {
+    event.preventDefault(); // Evita que el enlace redirija inmediatamente
+
+    const searchInput = document.getElementById('searchInput');
+    const searchValue = searchInput.value;
+
+    // Redirige a una URL con el parámetro de búsqueda
+    window.location.href = `/searched?dataSearched=${searchValue}`;
+  }
+
+  //TODO: Pasar esto al JS de la nueva vista para los resultados de las busquedas
+  //verify if param is present in the URL
+  const urlParams = new URLSearchParams(window.location.search);
+
+  if (urlParams.has('dataSearched')) {
+    // El parámetro 'dataSearched' está presente en la URL
+    console.log('El parametro esta presente en la URL');
+
+    const searchedValue = urlParams.get('dataSearched');
+
+    searchInput.value = searchedValue;
+
+  } else {
+    // El parámetro 'searched' no está presente en la URL
+    console.log('El parámetro "searched" no está presente en la URL');
+  }
+
+</script>

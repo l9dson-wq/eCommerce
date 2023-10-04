@@ -1,0 +1,256 @@
+input:focus {
+    outline: none;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.insert_product_grand_father{
+    background-color: #f7f7f7;
+    padding: 2vh;
+    width: 100%;
+}
+
+.insert_product_sub_father{
+    /* border: 1px solid blue; */
+    padding: 1vh;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    width: 85%;
+    margin: auto;
+}
+
+.insert_product_img_preview_side{
+    /* border: 1px solid black; */
+    margin: 1vh;
+    padding: 1vh;
+    display: flex;
+    justify-content: center;
+}
+
+.productImgContainer{
+    /* border: 1px solid pink; */
+    margin: 1vh;
+    width: 25% ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fileInput{
+    display: none;
+}
+
+.actualImageContainer{
+    width: 210px;
+    height: 200px;
+    border-radius: 20px;
+    background-color: #F3F3F3;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.actualImageContainer img {
+    position: absolute;
+    width: 60%;
+    object-fit: contain;
+}
+
+.addImageLabel{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+.inser_product_inputs{
+    /* border: 1px solid brown; */
+    margin: 1vh;
+    width: 90%;
+    margin: auto;
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.insert_product_input_subContainer{
+    display: flex;
+    justify-content: start;
+}
+
+.nameAndDescription{
+    /* border: 1px solid red; */
+    width: 30%;
+}
+
+.nameAndDescription div{ 
+    display: flex;
+    flex-direction: column;
+}
+
+.nameAndDescription div label{
+    color: #8D8D8D;
+    font-size: 16px;
+}
+
+.nameAndDescription div input{
+    border: 1px solid #DEDEDE;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.nameAndDescription div textarea{
+    border: 1px solid #DEDEDE;
+    resize: none;
+    padding: 8px;
+    font-size: 16px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.insert_product_input_subContainer{
+    /* border: 1px solid springgreen; */
+}
+
+.PriceAndQuantity{
+    /* border: 1px solid red; */
+    width: 20%;
+}
+
+.PriceAndQuantity div{ 
+    display: flex;
+    flex-direction: column;
+    margin-left: 5vh;
+}
+
+.PriceAndQuantity div input{
+    width: 40%;
+    border: 1px solid #DEDEDE;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.PriceAndQuantity div label{
+    color: #8D8D8D;
+    font-size: 16px;
+}
+
+.categoryAndCompanyName{
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    width: 25%;
+}
+
+.categoryAndCompanyName div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.categoryAndCompanyName div input{
+    border: 1px solid #DEDEDE;
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.categoryAndCompanyName div select{
+    border: 1px solid #DEDEDE;
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.categoryAndCompanyName div label{
+    color: #8D8D8D;
+    font-size: 16px;
+}
+
+.buttonContainerAtTheEnd{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: end;
+}
+
+.buttonContainerAtTheEnd button{
+    border: 1px solid black;
+    color: black;
+    background-color: transparent;
+    padding: 5px;
+    width: 10%;
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.buttonContainerAtTheEnd button:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+.buttonContainerAtTheEnd a{
+    border: 1px solid black;
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+    padding: 5px;
+}
+
+.buttonContainerAtTheEnd a:hover{
+    border: 1px solid #F1C93B;
+    background-color: #F1C93B;
+    color: white;
+    cursor: pointer;
+}
+
+.priceInputDiv span i{
+    /* border: 1px solid #dedede; */
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 0px;
+    color: #8D8D8D;
+}
+
+/* .actualImageContainer {
+    position: relative;
+    display: inline-block;
+  } */
+  
+  .imageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .imageOverlay p {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .actualImageContainer:hover .imageOverlay {
+    opacity: 1;
+  }
+  

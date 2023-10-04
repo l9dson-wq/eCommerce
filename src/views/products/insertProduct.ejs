@@ -1,0 +1,158 @@
+<link rel="stylesheet" href="/css/products/insertProduct.css" />
+
+<div class="insert_product_grand_father">
+  <!-- <h3>Aqui ira el formulario para insertar un producto nuevo</h3> -->
+
+  <div class="insert_product_sub_father">
+
+    <form action="/insert_product" method="post" enctype="multipart/form-data">
+
+    <div class="insert_product_img_preview_side">
+      <div class="productImgContainer">
+
+        <!-- <label for="img">Imagen 1</label> -->
+        <label id="insert_product_file_btn" for="fileInput" class="addImageLabel">
+          <div class="actualImageContainer">
+            <img src="" width="200" alt="" id="preview" />
+            <div class="imageOverlay">
+              <p>Imagen</p>
+            </div>
+          </div>
+        </label>
+        <input type="file" name="images"
+          class="fileInput"
+          id="fileInput"
+          onchange="showPreview(event, 'preview')"
+          value=""
+          required
+        />
+      </div>
+      <div class="productImgContainer">
+        <label id="insert_product_file_btn" for="fileInput2" class="addImageLabel">
+          <div class="actualImageContainer">
+            <img src="" width="200" alt="" id="preview2" />
+            <div class="imageOverlay">
+              <p>Imagen 2</p>
+            </div>
+          </div>
+        </label>
+        <input
+          type="file"
+          name="images"
+          class="fileInput"
+          id="fileInput2"
+          onchange="showPreview(event, 'preview2')"
+          value=""
+          required
+        />
+      </div>
+      <div class="productImgContainer">
+        <label id="insert_product_file_btn" for="fileInput3" class="addImageLabel">
+          <div class="actualImageContainer">
+            <img src="" width="200" alt="" id="preview3" />
+            <div class="imageOverlay">
+              <p>Imagen 3</p>
+            </div>
+          </div>
+        </label>
+        <input
+          type="file"
+          name="images"
+          class="fileInput"
+          id="fileInput3"
+          onchange="showPreview(event, 'preview3')"
+          value=""
+          required
+        />
+      </div>
+      <div class="productImgContainer">
+        <label id="insert_product_file_btn" for="fileInput4" class="addImageLabel">
+          <div class="actualImageContainer">
+            <img src="" width="200" alt="" id="preview4" />
+            <div class="imageOverlay">
+              <p>Imagen 4</p>
+            </div>
+          </div>
+        </label>
+        <input
+          type="file"
+          name="images"
+          class="fileInput"
+          id="fileInput4"
+          onchange="showPreview(event, 'preview4')"
+          value=""
+          required
+        />
+      </div>
+    </div>
+
+    <div class="inser_product_inputs">
+      
+      <div class="insert_product_input_subContainer">
+        <!-- NAME AND DESCRIPTION  -->
+        <div class="nameAndDescription">
+          <div>
+            <label for="name">Nombre</label>
+            <input type="text" name="name" id="name" required autocomplete="off" />
+          </div>
+          <div>
+            <label for="productDescription">Descripcion</label>
+            <textarea name="description" id="productDescription" cols="30" rows="10"></textarea>
+          </div>
+        </div>
+
+        <!-- PRICE AND QUANTITY -->
+        <div class="PriceAndQuantity">
+          <div class="priceInputDiv">
+            <label for="price">Precio</label>
+            <span>
+              <i class="fa-solid fa-dollar-sign"></i>
+              <input type="text" name="price" id="price" required autocomplete="off" />
+            </span>
+          </div>
+          <div>
+            <label for="quantity">Cantidad</label>
+            <input type="number" name="quantity" required autocomplete="off" />
+          </div>
+        </div>
+        <!--  -->
+
+        <div>
+          <!-- Campo de rate invisble para propositos de inserccion -->
+          <input type="number" value="0" name="rate" hidden />
+        </div>
+
+        <!-- CATEGORY AND COMPANY NAME  -->
+        <div class="categoryAndCompanyName">
+          <div>
+            <label for="category">Categoria</label>
+            <select name="category" id="category" required>
+              <% categories.forEach((item) => { %>
+                <option value="<%= item.name %>"><%= item.name %></option>
+              <% }) %>
+            </select>
+          </div>
+          <div>
+            <!-- <label for="companyName">Nombre del fabricante</label>
+            <input type="text" name="companyName" autocomplete="off" required> -->
+            <label for="companyName">Nombre del fabricante</label>
+            <select name="companyName" id="companyName" required>
+              <% brand.forEach((item) => { %>
+                <option value="<%= item.name %>"><%= item.name %></option>
+              <% }) %>
+            </select>
+          </div>
+        </div>
+        <!--  -->
+      </div>
+
+        <div class="buttonContainerAtTheEnd">
+          <button>Guardar</button>
+          <a href="/products">Cancelar</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="scripts/insertProduct.js"></script>

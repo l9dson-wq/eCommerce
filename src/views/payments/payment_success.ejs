@@ -1,0 +1,19 @@
+
+<div>
+    <!-- <h2></h2> -->
+</div>
+
+<script>
+    Swal.fire({
+        title: 'Pago realizado con exito!',
+        confirmButtonText: 'Gracias!',
+        icon: 'success', 
+        }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            setTimeout(() => {
+                window.location.href = "/cart";
+            }, 500);
+        }
+    })
+</script>

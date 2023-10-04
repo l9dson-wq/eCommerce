@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="/css/user/userProfile/userProfile.css">
+
+<div class="userProfileContainer">
+  
+  <div class="userProfileSubContainer">
+
+    <div class="userProfilePfpCover">
+      <!-- IMAGE USED LIKE A COVER -->
+    </div>
+
+    <form action="/user/edit" method="post" id="editUserProfileForm">
+      <div class="userProfilePfpAndName">
+        <div class="userProfilePfpAndName_img">
+          <img src="/<%= user.imagePath %>" alt="">
+        </div>
+        <div class="userProfilePfpAndName_name_userName">
+          <h3 id="nameForEdition"><%= user.name + ' ' + user.lastName %></h3>
+          <!-- EDITION -->
+          <input type="text" name="newName" value="<%= user.name %>"  id="input_name">
+          <!-- EDITION -->
+          <p class="userNameAndEmailView">@<%= user.userName %>/<%= user.email %></p>
+          <p class="onlyUserNameView">@<%= user.userName %></p>
+        </div>
+        <div class="userProfilePfpAndName_button">
+          <a href="#">Ver perfil</a>
+        </div>
+      </div>
+
+      <div class="userProfileUserDescription">
+        <h4>Descripcion</h4>
+        <!-- EDITION -->
+        <textarea name="userDescription" id="input_user_description" cols="30" rows="10"><%= description.description %></textarea>
+        <!-- EDITION -->
+        <p id="userDescriptionForEdition"><%= description.description %></p>
+      </div>
+  
+      <div class="userProfileCompanyName">
+        <div class="userProfileCompanyName_name">
+          <h3 id="companyNameForEdition"><%= description.companyName %></h3>
+          <!-- EDITION -->
+          <input type="text" name="companyName" placeholder="Nombre de tu compañia" value="<%= description.companyName %>" id="input_company_name">
+          <!-- EDITION -->
+          <p>Actualiza el nombre de tu compañia y detalles.</p>
+        </div>
+        <div class="userProfileCompanyName_buttons">
+          <a href="#" id="buttonToActivateEdit">Actualiza aqui</a>
+          <!-- EDITION -->
+          <div id="buttonsContainerForEditing">
+            <a href="#" id="buttonToSaveEditUserProfile">Guardar cambios</a>
+            <a href="#" id="buttonToCancelEdit">Cancelar</a>
+          </div>
+          <!-- EDITION -->
+        </div>
+      </div>
+  
+      <div class="userProfileSocialProfiles">
+        <p class="userProfileSocialProfiles_title">Redes sociales</p>
+        <div class="userProfileSocialProfiles_container">
+          <span>Link:</span>
+          <div class="userProfileSocialProfile" id="userSocialLinkContainer">
+            <a href="<%= description.webSite %>" id="socialLinkForEdition1"><%= description.webSite %></a>
+          </div>
+            <!-- EDITION -->
+            <input type="text" value="<%= description.webSite %>" placeholder="Link a tu red social" name="socialLink1" id="input_social_link">
+            <!-- EDITION -->
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<script src="/scripts/user/editUserProfile.js"></script>

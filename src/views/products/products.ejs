@@ -1,0 +1,76 @@
+<!-- HTML -->
+<link rel="stylesheet" href="/css/products/products.css" />
+
+<div class="grand_father_product_card">
+  <div id="product_index_superior_information">
+    <div>
+      <h3>TeamStore</h3>
+      <p>Tus productos a la venta</p>
+    </div>
+    <a href="/insertProduct" id="product_index_add_producto_button">Registrar un nuevo producto</a>
+  </div>
+  <br>
+  <% if ( products.length > 0 ) { %> <% products.forEach((item) => { %>
+    <div class="product_child_card">
+      <div class="product_card_elements">
+        <div class="product_card_img">
+          <% imagesCollectionFound.forEach((image) => { %>
+            <% if ( image.productId && item._id ) { %>
+              <% if ( image.productId.toString() === item._id.toString() ) { %>
+                <img src="<%= image.imagePath1 %>" alt="" />
+              <% } %>
+            <% } %>
+          <% }) %>
+          <a href="/editProduct?productId=<%= item._id %>" class="edit_card_link"><i class="ri-ball-pen-line"></i>Editar</a>
+        </div>
+        <div class="product_card_extra_elements">
+          <div class="product_card_sub_elements">
+            <div>
+              <p style="font-weight: 700; font-size: 18px;"><%= item.name %></p>
+              <span style="margin-left: 20px; color: #6060608b;"><%= item.code %></span>
+              <% views.forEach((view) => { %>
+                <% if ( item._id.toString() === view.productId.toString() ) { %>
+                  <span style="margin-left: 20px; color: #6060608b;">Vistas: <%= view.count %></span>
+                <% } %>
+              <% }) %>
+            </div>
+            <div class="product_card_center_data">
+              <!-- <div>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p>( <%= item.rate %> )</p> -->
+              <i class="ri-box-3-line" style="font-size: 20px;"></i>
+              <i class="ri-leaf-line"></i>
+              <i class="ri-handbag-line" style="font-size: 20px;"></i>
+            </div>
+          </div>
+          <p class="product_card_price">$<%= item.price %></p>
+          <a href="#" class="product_card_delete_button" data-product-id="<%= item._id %>"><i class="ri-delete-bin-line"></i></a>
+        </div>
+      </div>
+    </div>
+    <br />
+    <span class="product_card_bottom_line"></span>
+    <br />    
+  <% }) %> <% } else { %>
+    <h3>No tienes productos a la venta aún</h3>
+  <% } %>
+</div>
+
+<!-- MODAL para la confirmación de la eliminación de un producto -->
+<div id="confirmDeleteModal" class="modal">
+  <div class="modal-content">
+    <i class="fa-regular fa-circle-xmark"></i>
+    <h2>¿Estás seguro de que deseas eliminar este producto?</h2>
+    <div class="modal-buttons">
+      <a id="confirmDeleteBtn">Sí</a>
+      <a id="cancelDeleteBtn">No</a>
+    </div>
+  </div>
+</div>
+
+<script src="scripts/products.js"></script>

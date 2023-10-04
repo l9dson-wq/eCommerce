@@ -1,0 +1,162 @@
+<link rel="stylesheet" href="/css/products/productInformation.css" />
+
+<div class="productInformation_grand_father">
+  <!-- Aqui debe ir algo para poder volver a vistas anteiores, como esta en el design -->
+  <div class="productInformation_sub_father">
+    <div class="productInformation_img_side">
+      <div class="productInformation_img_container">
+        <img src="/<%= imagesCollectionGot.imagePath1 %>" alt="" id="imagesCollection_central_image" />
+      </div>
+      <div class="productInformation_img_side_mini">
+        <div id="imagesCollection_image1_parent">
+          <img src="/<%= imagesCollectionGot.imagePath1 %>" alt="" id="imagesCollection_image1" />
+        </div>
+        <div id="imagesCollection_image2_parent">
+          <img src="/<%= imagesCollectionGot.imagePath2 %>" alt="" id="imagesCollection_image2" />
+        </div>
+        <div id="imagesCollection_image3_parent">
+          <img src="/<%= imagesCollectionGot.imagePath3 %>" alt="" id="imagesCollection_image3" />
+        </div>
+        <div id="imagesCollection_image4_parent">
+          <img src="/<%= imagesCollectionGot.imagePath4 %>" alt="" id="imagesCollection_image4" />
+        </div>
+      </div>
+    </div>
+    <div class="productInformation_info_side">
+      <div class="productInformation_info_side_1">
+        <h2><%= product.name %></h2>
+        <p id="productDescription">
+          <%= product.description.substring(0, 100) %>...
+        </p>
+        <a href="#" id="showMoreLink" onclick="toggleDescription(); return false;">Mostrar más</a>
+        
+        <div style="margin-top: 20px;">
+          <!-- <i id="star-1" class="fa-solid fa-star"></i>
+          <i id="star-2" class="fa-solid fa-star"></i>
+          <i id="star-3" class="fa-solid fa-star"></i>
+          <i id="star-4" class="fa-solid fa-star"></i>
+          <i id="star-5" class="fa-solid fa-star"></i>
+          <span>(<%= product.rate %>)</span> -->
+        </div>
+      </div>
+      <!-- <div class="productInformation_info_side_2">
+        <h4>$<%= product.price %> or 99.99/meses</h4>
+        <p>Pago sugerido especial de 6 meses con condiciones de finanzas</p>
+      </div> -->
+      <!-- SELLER INFORMATION SECTION -->
+      <div class="productInformation_info_side_seller">
+        <a href="/sellerInformation/<%= seller._id %>/information">
+          <img src="/<%= seller.imagePath %>" alt="">
+        </a>
+        <div>
+          <a href="/sellerInformation/<%= seller._id %>/information"><h4><%= seller.name + ' ' + seller.lastName %></h4></a>
+          <p><strong>País: </strong><%= seller.country %></p>
+          <p><strong>Teléfono: </strong><%= seller.phone %></p>
+          <p><strong>Email: </strong><%= seller.email %></p>
+        </div>
+      </div>
+      <div class="productInformation_info_side_3">
+        <div class="productInformation_info_side_3_1">
+          <!-- <div class="productInformation_info_side_3_1_1">
+            <a href="#">-</a>
+            <span>1</span>
+            <a href="#">+</a>
+          </div> -->
+          <div class="productInformation_info_side_3_1_2">
+            <p>Solo quedan <%= product.quantity %> de este articulo!</p>
+            <p>No te lo pierdas</p>
+          </div>
+        </div>
+        <div class="productInformation_info_side_3_2">
+          <% if ( session.user ) { %>
+            <!-- <button class="productInformation_info_side_3_2_buy">Comprar ahora</button> -->
+            <form action="/add_to_cart" method="post" id="form_add_to_cart_button">
+              <input type="text" hidden value="<%= product._id %>" name="product_id">
+              <button class="productInformation_info_side_3_2_cart" id="add-to-cart-button">
+                Agregar al carrito
+              </button>
+            </form>
+          <% } else { %>
+            <h3>Inicia sesion para empezar a comprar tus articulos!</h3>
+          <% } %>
+        </div>
+        <div class="productInformation_info_side_3_3">
+          <div class="productInformation_info_side_3_3_1">
+            <h5><i class="fa-solid fa-truck"></i> Envió gratis</h5>
+            <a href="#">Introduce tu código postal para ver la disponibilidad</a>
+          </div>
+          <div class="productInformation_info_side_3_3_2">
+            <h5><i class="fa-solid fa-cart-arrow-down"></i> Reembolso</h5>
+            <p>30 días gratis de reembolso. <a href="#">Detalles</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  const imagesCollection_central_image = document.getElementById('imagesCollection_central_image');
+  const imagesCollection_image1 = document.getElementById('imagesCollection_image1');
+  const imagesCollection_image2 = document.getElementById('imagesCollection_image2');
+  const imagesCollection_image3 = document.getElementById('imagesCollection_image3');
+  const imagesCollection_image4 = document.getElementById('imagesCollection_image4');
+  const imagesCollection_image1_parent = document.getElementById('imagesCollection_image1_parent');
+  const imagesCollection_image2_parent = document.getElementById('imagesCollection_image2_parent');
+  const imagesCollection_image3_parent = document.getElementById('imagesCollection_image3_parent');
+  const imagesCollection_image4_parent = document.getElementById('imagesCollection_image4_parent');
+
+  function removeBorderFromAll() {
+    const imageParents = [imagesCollection_image1_parent, imagesCollection_image2_parent, imagesCollection_image3_parent, imagesCollection_image4_parent];
+    imageParents.forEach(parent => {
+      parent.style.border = '';
+    });
+  }
+
+  imagesCollection_image1_parent.addEventListener('click', () => {
+    removeBorderFromAll();
+    imagesCollection_central_image.src = imagesCollection_image1.src;
+    imagesCollection_image1_parent.style.border = '3px solid black';
+  });
+
+  imagesCollection_image2_parent.addEventListener('click', () => {
+    removeBorderFromAll();
+    imagesCollection_central_image.src = imagesCollection_image2.src;
+    imagesCollection_image2_parent.style.border = '3px solid black';
+  });
+
+  imagesCollection_image3_parent.addEventListener('click', () => {
+    removeBorderFromAll();
+    imagesCollection_central_image.src = imagesCollection_image3.src;
+    imagesCollection_image3_parent.style.border = '3px solid black';
+  });
+
+  imagesCollection_image4_parent.addEventListener('click', () => {
+    removeBorderFromAll();
+    imagesCollection_central_image.src = imagesCollection_image4.src;
+    imagesCollection_image4_parent.style.border = '3px solid black';
+  });
+
+  //CODIGO QUE NO SE ESTA CARGANDO DESDE EL ARCHIVO DEL NAVBVAR.JS
+
+  function toggleDescription() {
+    var descriptionElement = document.getElementById("productDescription");
+    var linkElement = document.getElementById("showMoreLink");
+
+    if (descriptionElement.classList.contains("expanded")) {
+      // Si ya está expandido, reducirlo
+      descriptionElement.innerHTML = '<%= product.description.substring(0, 150) %>...';
+      descriptionElement.classList.remove("expanded");
+      linkElement.textContent = "Mostrar más";
+    } else {
+      // Si no está expandido, mostrar la descripción completa
+      descriptionElement.innerHTML = '<%= product.description %>';
+      descriptionElement.classList.add("expanded");
+      linkElement.textContent = "Mostrar menos";
+    }
+  }
+</script>
+
+<script src="/scripts/product/productInformation.js"></script>

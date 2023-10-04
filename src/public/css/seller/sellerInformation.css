@@ -1,0 +1,239 @@
+
+.sellerInformationView{
+  /* border: 1px solid red; */
+  padding: 0%;
+  background-color: #f5f5f5;
+}
+
+.sellerInformationContainer{
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.sellerInformationLeftContent{
+  /* border: 1px solid red; */
+  width: 100%;
+}
+
+.sellerInformationRightContent{
+  /* border: 1px solid red; */
+  width: 60%;
+}
+
+.sellerInformationLeftContentSuperior{
+  /* border: 1px solid rgb(0, 4, 255); */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+  margin: auto;
+  /* background-color: white; */
+  /* border-radius: 20px; */
+}
+
+.sellerInformationPfp img{
+  width: 250px;
+  height: 250px;
+  border-radius: 10%;
+}
+
+.sellerInformationPersonal{
+  margin-left: 30px;
+  /* border: 1px solid red; */
+  width: 100%;
+}
+
+.sellerInformationPersonal .sellerInformationPersonalName{
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.sellerInformationPersonalExtraInformationContentInfo{
+  margin-left: 10%;
+}
+
+.sellerInformationPersonalExtraInformation{
+  margin-top: 5%;
+  display: flex;
+  width: 100%;
+  /* border: 1px solid red; */
+
+}
+
+.sellerInformationUnderPersonal{
+  display: flex;
+}
+
+.sellerInformationPersonalExtraInformationContent{
+  display: flex;
+  /* border: 1px solid red; */
+  width: 100%;
+}
+
+.sellerInformationPersonalExtraInformationContent strong{
+  /* margin-left: 20px; */
+  /* color: #CFD3DB; */
+}
+
+.sellerInformationLeftContentMiddle{
+  margin: auto;
+  /* border: 1px solid red; */
+  width: 60%;
+}
+
+.sellerInformationLeftContentSuperiorTop{
+  display: flex;
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  width: 90%;
+  background-color: white;
+  border-radius: 20px;
+  padding: 5%;
+}
+
+.sellerInformationLeftContentSuperiorBottom{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  flex-direction: column;
+  /* border: 1px solid red; */
+  margin-top: 5%;
+  background-color: white;
+  border-radius: 20px;
+  padding: 5%;
+}
+
+.sellerInformationLeftContentSuperiorBottom div{
+  width: 100%;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10%;
+}
+
+
+.sellerInformationLeftContentSuperiorBottom div p{
+  font-weight: 700;
+}
+
+.sellerInformationRightContent{
+  padding: 2%;
+  width: 100%;
+}
+
+.sellerInformationRightContentContainer{
+  background-color: white;
+  padding: 2%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  flex-direction: row;
+  width: 90%;
+  margin: auto;
+}
+
+.sellerInformationRightContent h3{
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+
+.sellerInformationViewTitleCenter{
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 2%;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 1800px) {
+
+  .sellerInformationView{
+    /* border: 1px solid red; */
+    padding: 2%;
+  }
+
+  .sellerInformationContainer{
+    /* display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start; */
+  }
+
+  .sellerInformationRightContent{
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 1650px) {
+
+  .sellerInformationContainer{
+
+  }
+
+  .sellerInformationLeftContentSuperiorTop{
+    flex-direction: column;
+  }
+
+}
+
+@media (max-width: 1400px) {
+
+ .sellerInformationRightContent img{
+  display: none;
+ }
+
+ .sellerInformationUnderPersonal{
+  flex-direction: column;
+ }
+
+}
+
+@media (max-width: 700px) {
+
+  .sellerInformationContainer{
+    flex-direction: column;
+  }
+
+  .sellerInformationLeftContentSuperior{
+    width: 100%;
+  }
+
+  .sellerInformationContainer{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .sellerInformationRightContent{
+    margin-top: 10%;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .sellerInformationRightContent{
+    width: 100%;
+  }
+
+  .sellerInformationLeftContentSuperior{
+    width: 100%;
+  }
+
+  .sellerInformationLeftContent{
+    width: 100%;
+  }
+
+  .sellerInformationContainer{
+    width: 100%;
+  }
+
+}

@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="/css/cart/cart.css">
+
+<div class="cart_grand_father">
+    <div class="cart_grand_container">
+        <div class="cart_right_content">
+            <h4 style="margin-left: 10px; color: #2d2c2c; font-size: 22px; margin-bottom: 20px; margin-top: 0px; text-align: center;">Tu carrito de compras</h4>
+            <div class="cart_order_summary">
+                <div class="cart_order_summary_content">
+                    <% products.forEach((product) => { %>
+                        <div class="cart_order_summary_item">
+                            <div class="cart_order_summary_img_side">
+                                <% images.forEach((imageItem) => { %>
+                                    <% if ( imageItem.productId.toString() == product._id.toString() ) { %>
+                                        <img src="<%= imageItem.imagePath1 %>" alt="">
+                                    <% } %>
+                                <% }) %>
+                                <div class="cart_order_summary_information">
+                                    <div>
+                                        <p class="cart_item_name"><%= product.name %></p>
+                                        <span><%= product.code %></span>
+                                    </div>
+                                    <p>$<%= product.price %></p>
+                                </div>
+                            </div>
+                            <div class="cart_order_summary_add_quit">
+                                
+                                <% cart.forEach((cart) => { %>
+                                    <% if ( cart.product_id.toString() == product._id.toString() ) { %>
+                                        <a href="/reduce_cart/<%= cart._id %>" class="reduce-cart">-</a>
+                                        <p><%= cart.quantity %></p>
+                                        <a data-product-id="<%= product._id %>" href="#" class="add-to-cart">+</a>
+                                    <% } %>
+                                <% }) %>
+                                
+                            </div>
+                        </div>
+                    <% }) %>
+                    <hr>
+                    <div class="cart_order_summary_numbers">
+                        <div>
+                            <p>sub total</p>
+                            <span>$<%= totalPrice %></span>
+                        </div>
+                        <div>
+                            <p>Envio</p>
+                            <span>$0</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="cart_order_summary_total">
+                        <div>
+                            <p>Total</p>
+                            <span style="font-size: 25px;">$<%= totalPrice %></span>
+                        </div>
+                    </div>
+                    <div class="cart_order_summary_button">
+                        <button id="confirm_cart_order">Confirmar orden</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/scripts/cart/cart.js" defer></script>

@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="/css/favorites/favorites.css">
+
+<div class="favoritesGrandContainer">
+
+    <div class="favoritesSearchBarContainer">
+        <div class="favoritesSearchBarDiv">
+            <input type="text" placeholder="Busca el titulo entre tus favoritos" id="searching">
+        </div>
+    </div>
+
+    <div class="favoritesContainer">
+        <h4 style="margin-bottom: 20px;">Lista de favoritos</h4>
+        <% favorites.forEach((item) => { %>
+            <% seller.forEach((seller) => { %>
+            <% productImages.forEach((image) => { %>
+                <% if (item.userId && seller._id && image.productId && seller._id.toString() === item.userId.toString()) { %>
+                        <% if (image.productId.toString() === item._id.toString()) { %>
+                        <!-- Resto del código aquí -->
+                            <div class="favoritesItem">
+                                <div class="favoritesItemTitle">
+                                    <h3 class="favoritesItemSpecific">
+                                        <a href="/product/<%= item._id %>/information"><%= item.name %></a>
+                                    </h3>
+                                    <div class="favoritesItemSellerInformation">
+                                        <img src="/<%= seller.imagePath %>" alt="">
+                                        <div>
+                                            <p><%= seller.name %></p>
+                                            <span>Vendedor</span>
+                                        </div>
+                                    </div>
+                                    <div class="productDescriptionAndImg">
+                                        <p>
+                                            <%= item.description %>
+                                        </p>
+                                        <img src="/<%= image.imagePath1 %>" alt="" class="productImg">
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% } %>
+                <% }) %>
+            <% }) %> 
+        <% }) %>
+
+    </div>
+
+</div>
+
+<script src="/scripts/favorites/favorites.js"></script>

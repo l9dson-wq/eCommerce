@@ -1,0 +1,130 @@
+<link rel="stylesheet" href="css/index/index.css">
+<link rel="stylesheet" href="css/index/index_week_selection.css">
+
+<div>
+    
+    <div class="cover-container">
+        <div class="cover_container_1">
+            <img src="imgs/img1.jpg" alt="">
+            <div class="text-overlay">
+                <h1>Adquiere increibles Ofertas</h1>
+                <p>Hasta un 50% de descuento en productos</p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div class="cover_container_2">
+            <img src="imgs/img4.jpg" alt="">
+            <div class="text_overlay_2">
+                <h1>Tu casa, nuestro deseo</h1>
+                <p>Aprovecha nuestros increibles descuentos</p>
+                <!-- <button>Comprar</button> -->
+            </div>
+        </div>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="cover_container_3">
+                  <img src="imgs/img6.jpg" alt="">
+                  <div class="text_overlay_3">
+                    <h2>-30%</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>          
+    </div>
+
+    <div class="filters">
+        <!-- <div class="filter_content">
+            <a href="#" class="filter_button">Precio  <i class="fa-solid fa-angle-down"></i></a>
+            <a href="#" class="filter_button">Reseñas  <i class="fa-solid fa-angle-down"></i></a>
+            <a href="#" class="filter_button">Color  <i class="fa-solid fa-angle-down"></i></a>
+            <a href="#" class="filter_button">Material  <i class="fa-solid fa-angle-down"></i></a>
+            <a href="#" class="filter_button">Ofertas  <i class="fa-solid fa-angle-down"></i></a>
+        </div>
+    
+        <a href="#" class="filter_button_filter">Filtrar por <i class="fa-solid fa-angle-down"></i></a> -->
+    </div>
+
+    <div class="index_content">
+        <h2>Productos a la venta</h2>
+
+    
+        <div class="product_card_container">
+            <% if ( products.length !== 0) { %>
+                <div class="button_to_scroll_responsive_purposes">
+                    <button class="buttons_to_scroll" onclick="scrollContentToRight()"><i class="fa-solid fa-chevron-left"></i></button>
+                </div>
+                <div class="cover_product_elements">
+                    <% products.forEach((item) => { %>
+                        <div class="product_card">
+                            <div class="card_image_side">
+                                <a href="/product/<%= item._id %>/information">
+                                    <% imagesCollectionGot.forEach((image) => { %>
+                                        <% if ( image.productId && item._id ) { %>
+                                            <% if ( image.productId.toString() === item._id.toString() ) { %>
+                                                <img src="<%= image.imagePath1 %>" alt="" />
+                                            <% } %>
+                                        <% } %>
+                                    <% }) %>
+                                </a>
+                                <% if (session.user) { %>
+                                    <% if (favoritesProducts.includes(item._id.toString())) { %>
+                                        <a href="#" data-productid="<%= item._id %>" class="card_image_side_favorites_added">
+                                            <i class="ri-bookmark-fill"></i>
+                                        </a>
+                                    <% } else { %>
+                                        <a href="#" data-productid="<%= item._id %>" class="card_image_side_favorites">
+                                            <i class="ri-bookmark-fill"></i>
+                                        </a>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            <div class="card_product_info_side">
+                                <p><%= item.name %></p>
+                                <span style="font-size: 18px;">$<%= item.price %></span>
+                            </div>
+                            <div class="card_extra_info">
+                                <p><%= item.companyName %></p>
+                                <div class="card_extra_info_rate">
+                                    <!-- <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <span>(<%= item.rate %>)</span> -->
+                                </div>
+                            </div>
+                            <a id="see_information_a" href="/product/<%= item._id %>/information">Ver informacion</a>
+                        </div>
+                    <% }) %>
+                </div>
+                <div class="button_to_scroll_responsive_purposes">
+                    <button class="buttons_to_scroll" onclick="scrollContentToLeft()"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            <% } %>
+        </div>
+
+        <!-- <div class="index_content_week_selection">
+            <h2>Nuestras principales categorias</h2>
+
+            <div class="week_selection_container">
+                <div class="cover_week_selection_elements">
+                    <% category.slice(0, 3).forEach((item) => { %>
+                        <div class="cover_week_selection_categories">
+                            <div class="cover_week_selection_circle">
+                                <i class="ri-bookmark-3-fill" style="font-size: 40px;"></i>
+                            </div>
+                            <p><%= item.name %></p>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+</div>
+
+<div id="floatingMessage"></div>
+
+<script src="scripts/index.js"></script>

@@ -1,0 +1,88 @@
+
+
+.index_content_week_selection{
+  margin-top: 3%;
+  /* border: 1px solid red; */
+}
+
+.cover_week_selection_elements{
+  margin-top: 2%;
+  margin-bottom: 1%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cover_week_selection_circle{
+  height: 200px;
+  width: 200px;
+  background-color: #dedede;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cover_week_selection_circle img{
+  width: 100%;
+}
+
+.cover_week_selection_categories{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cover_week_selection_categories p{
+  font-size: 18px;
+  margin-top: 1%;
+}
+
+.cover_week_selection_elements_responsive_purposes{
+  display: none;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 900px) { 
+    
+  .cover_week_selection_circle{
+      width: 100px;
+      height: 100px;
+  }
+
+}
+
+@media (max-width: 800px) { 
+    
+  .cover_week_selection_circle{
+      width: 90px;
+      height: 90px;
+  }
+
+}
+
+@media (max-width: 1300px) {
+
+  .cover_week_selection_circle{
+    width: 150px;
+    height: 150px;
+  } 
+
+}
+
+@media (max-width: 1000px) {
+
+  .cover_week_selection_circle{
+    width: 120px;
+    height: 120px;
+  } 
+
+}
+
+@media (max-width: 400px) {
+
+  .cover_week_selection_elements{
+    flex-wrap: wrap;
+  }
+
+}

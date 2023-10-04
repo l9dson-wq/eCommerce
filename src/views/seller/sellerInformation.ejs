@@ -1,0 +1,104 @@
+
+<link rel="stylesheet" href="/css/seller/sellerInformation.css">
+
+<div class="sellerInformationView">
+
+  <!-- <h3 class="sellerInformationViewTitleCenter">Perfil del vendedor</h3> -->
+
+  <div class="sellerInformationContainer">
+
+    <div class="sellerInformationLeftContent">
+
+      <!-- <p>left side content</p> -->
+      <div class="sellerInformationLeftContentSuperior">
+        <div class="sellerInformationLeftContentSuperiorTop">
+          <div class="sellerInformationPfp">
+            <img src="/<%= sellerInformation.imagePath %>" alt="">
+          </div>
+          <div class="sellerInformationPersonal">
+            <!-- <span><i class="fa-solid fa-circle" style="color: rgb(1, 205, 1);"></i> Active</span> -->
+            <p class="sellerInformationPersonalName"><%= sellerInformation.name.toUpperCase() + ' ' + sellerInformation.lastName.toUpperCase() %></p>
+            <span><i class="fa-solid fa-star" style="color: gold;"></i> TOP SELLER </span>
+
+            <div class="sellerInformationUnderPersonal">
+              <div class="sellerInformationPersonalExtraInformation">
+                <div>
+                  <div class="sellerInformationPersonalExtraInformationContent">
+                    <strong>Correo electronico: </strong>
+                  </div>
+                  <div class="sellerInformationPersonalExtraInformationContent">
+                    <strong>Dirrecion: </strong>
+                  </div>
+                  <div class="sellerInformationPersonalExtraInformationContent">
+                    <strong>Numero: </strong>
+                  </div>
+                  <div class="sellerInformationPersonalExtraInformationContent">
+                    <strong>edad: </strong>
+                  </div>
+                  <div class="sellerInformationPersonalExtraInformationContent">
+                    <strong>Nomre de usuario: </strong>
+                  </div>
+                  <div class="sellerInformationPersonalExtraInformationContent">
+                    <strong>Productos a la venta: </strong>
+                  </div>
+                </div>
+                <div class="sellerInformationPersonalExtraInformationContentInfo">
+                  <p> <%= sellerInformation.email.toUpperCase() %></p>
+                  <p> <%= sellerInformation.country.toUpperCase() %></p>
+                  <p><%= sellerInformation.phone %></p>
+                  <p><%= sellerInformation.age %></p>
+                  <p><%= sellerInformation.userName.toUpperCase() %></p>
+                  <p><%= quantityOfProducts %></p>
+                </div>
+              </div>
+              <div class="sellerInformationPersonalExtraInformation">
+                <div>
+                  <div class="sellerInformationPersonalExtraInformationContent">
+                    <strong>Valoraciones: </strong>
+                  </div>
+                  <div class="sellerInformationPersonalExtraInformationContent">
+                    <strong>Habilidades: </strong>
+                  </div>
+                  <div class="sellerInformationPersonalExtraInformationContent">
+                    <strong>Fecha de creacion del perfil: </strong>
+                  </div>
+                </div>
+                <div class="sellerInformationPersonalExtraInformationContentInfo">
+                  <p>
+                    <% for (let i=0; i<6; i++) { %>
+                      <i class="fa-solid fa-star" style="color: gold;"></i>
+                    <% } %>
+                    (0)
+                  </p>
+                  <p>seller, UI, Top seller</p>
+                  <p><%= userCreatedProfile %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sellerInformationRightContent">
+      <div class="sellerInformationRightContentContainer">
+        <div>
+          <span>Este vendedor cuenta con certificaciones!</span>
+  
+          <h3>Informacion extra sobre este vendedor</h3>
+  
+          <% if ( sellerExtraInformation ) { %>
+            <p><%= sellerExtraInformation.description %></p>
+          <% } else { %>
+            <p style="color: red; font-size: 20px;">Este vendedor aun no posee una descripcion</p>
+          <% } %>
+        </div>
+        <div>
+          <img src="/imgs/resource2.png" alt="">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

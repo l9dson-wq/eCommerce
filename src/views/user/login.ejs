@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="/css/user/login.css">
+
+<div class="login_father">
+    <div class="login">
+        <h2>Bienvenido!</h2>
+        <p style="color: cadetblue;">Estamos encantados de tenerte en nuestra plataforma.</p>
+
+        <span id="login_error_alert_message" name="fade-in">Verifique el usuario o la Contraseña!</span>
+        <span id="login_email_error_message" name="">Correo no confirmado!</span>
+
+        <div class="login_inputs">
+            <form id="login_form" method="post" action="login">
+                <div>
+                    <label for="userName">usuario</label>
+                    <input type="text" id="userName" name="userName" placeholder="Nombre de usuario" autocomplete="off">
+                </div>
+                <div>
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Contraseña" autocomplete="off">
+                </div>
+            </form>
+        </div>
+        <button type="submit" class="btn_send" form="login_form">Iniciar sesión</button>
+
+        <p>¿Aún no tienes un usuario?</p>
+        <a href="/register" class="register_now_login">Regístrate ahora</a>
+    </div>
+    <!-- <div class="picture_for_login">
+        <img src="/imgs/img3.jpg" alt="">
+        <div class="overlay_text">
+            Tus necesidades son los objetivos de otros,<br>
+            encuentra lo que buscas
+        </div>
+    </div> -->
+</div>
+
+<script src="scripts/login.js"></script>

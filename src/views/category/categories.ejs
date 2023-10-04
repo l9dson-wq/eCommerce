@@ -1,0 +1,64 @@
+
+<link rel="stylesheet" href="/css/category/home.css">
+
+<div id="category_container">
+  
+  <div id="category_top_information">
+    <div id="category_top_information_left_side">
+      <h3>Categorias</h3>
+      <p>Lista de categorias en la plataforma</p>
+    </div>
+    <div id="category_top_information_right_side">
+      <div>
+        <a href="#" id="category_top_add_button"><i class="fa-solid fa-circle-plus"></i></a>
+        <!-- <form action="" id="category_top_filter_button">
+          <select name="" id="">
+            <option value="">Recientes</option>
+          </select>
+        </form> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="category_middle_information">
+    <% categories.forEach((item) => { %>
+    <div id="category_middle_information_content">
+      <div id="category_middle_information_content_img">
+        <p><%= item._doc.name.charAt(0).toUpperCase() %></p>
+        <h4><%= item._doc.name %></h4>
+      </div>
+      <div id="category_middle_information_content_date">
+        <!-- <strong>Creada en: </strong><p><%= item.created %></p> -->
+        <!-- <% users.forEach((user) => { %>
+          <strong>Agregada por: </strong><p><%= user.name + " " + user.lastName %></p>
+        <% }) %> -->
+        <% let count = 0; %>
+        <% products.forEach((product) => { %>
+          <% if (product.category === item._doc.name) { %>
+            <% count++; %>
+          <% } %>
+        <% }) %>      
+        <strong>Productos: </strong><p><%= count %></p>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+
+</div>
+
+<div id="category_modal_id" class="category_modal">
+  <div class="category_modal-content">
+    <!-- <span id="category_modal_close" class="category_modal-close">&times;</span> -->
+    <h3>Insertar nueva categoría</h3>
+    <form action="/add_category" method="post" id="add_category_form">
+      <input type="text" name="category_name_data" id="category_name_input" placeholder="Nombre de la categoría" required>
+    </form>
+    <div>
+      <button id="category_add_button" type="submit" form="add_category_form">Agregar</button>
+      <button id="category_cancel_button">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script src="scripts/category.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
